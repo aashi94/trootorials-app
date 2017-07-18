@@ -20,6 +20,16 @@ module.exports = function(app, passport) {
 };
 
 
+function uuid() {
+  return 'xxxx-xxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+var guid = uuid();
+guid = guid + '.mp4';
+
 function addVideoHandler(req, res) {
   var data = {
     title: req.body.title,
@@ -76,6 +86,7 @@ function allVideosHandler(req, res, next) {
     }
   });
 }
+
 
 function particularVideoHandler(req, res) {
   var whereObj = {
